@@ -197,6 +197,16 @@ const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 ```
 
+## Environment File
+
+To support the management of environment variables, the example uses `dotenv`.  By importing `dotenv/config`, you can maintain environment variables in a `.env` file.
+
+Notes:
+
+* The content of the `.env` file is for _local testing only_.
+* Any live environment variables on your distribution platform should be maintained separately
+* ***DO NOT PUT SECRETS IN ENVIRONMENT VARIABLES.  EVER!!***
+
 # Development Lifecycle
 
 To run the API locally, simply run `npm start`.  Any changes made should automatically trigger a restart of the server.
@@ -210,4 +220,20 @@ The application can be built by running `npm run build`.  You can test the build
 ```bash
 cd dist
 node index.js
+```
+
+# Packaging
+
+The distributable code in `dist` is missing the required dependencies and will fail in a live environment.  To fix this, you can add "packaging" scripts to your `package.json`:
+
+```json
+    "install-prod": "cp ./package.json dist && cd dist && npm --omit=dev install && cd ..",
+    "zip-prod": "rm -f dist/*.zip && cd dist && zip -r $npm_package_name-$npm_package_version.zip . && cd ..",
+    "package": "npm-run-all install-prod zip-prod"
+```
+
+Now you can package your final distribution in a single `zip` file:
+
+```
+npm run package
 ```

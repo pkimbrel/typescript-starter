@@ -12,7 +12,10 @@
     "clean": "rimraf dist",
     "compile": "tsc --build",
     "alias": "tsc-alias",
-    "build": "npm-run-all clean compile alias"
+    "build": "npm-run-all clean compile alias",
+    "install-prod": "cp ./package.json dist && cd dist && npm --omit=dev install && cd ..",
+    "zip-prod": "rm -f dist/*.zip && cd dist && zip -r $npm_package_name-$npm_package_version.zip . && cd ..",
+    "package": "npm-run-all install-prod zip-prod"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
