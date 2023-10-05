@@ -4,8 +4,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import 'dotenv/config'
 
-console.log(`VAR: ${process.env.VAR1}`)
-
 const app = express();
 app.use(bodyParser.json());
 app.use(
@@ -18,4 +16,5 @@ app.use("/api", (req, res) => {
   res.status(200).send(getStuff());
 })
 
-app.listen(9080, () => console.log("Listening on port 9080"))
+const port = process.env.PORT
+app.listen(port, () => console.log(`Listening on port ${port}`))
