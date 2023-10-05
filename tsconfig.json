@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
+    "forceConsistentCasingInFileNames": true,
+    "module": "NodeNext",
+    "outDir": "dist",
+    "baseUrl": "src",
+  },
+  "include": ["src/**/*"],
+}

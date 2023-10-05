@@ -1,0 +1,42 @@
+{
+  "name": "typescript-starter",
+  "version": "1.0.0",
+  "description": "Provides a simple typescript starter appliation that addresses relative folders and minimal configuration",
+  "main": "index.ts",
+  "author": "Paul Kimbrel <pkimbrel@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon",
+    "dev": "ts-node -r tsconfig-paths/register ./src",
+    "test": "ts-node -r tsconfig-paths/register ./test/runTest.spec.ts",
+    "clean": "rimraf dist",
+    "compile": "tsc --build",
+    "alias": "tsc-alias",
+    "build": "npm-run-all clean compile alias"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.18",
+    "@types/node": "^20.8.2",
+    "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.2.2"
+  },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "src/*",
+      "test/*"
+    ],
+    "ext": "ts, json"
+  }
+}
