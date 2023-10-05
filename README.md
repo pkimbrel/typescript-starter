@@ -47,7 +47,7 @@ npm install --save-dev rimraf nodemon npm-run-all
 To provide a functioning example, this project has an Express driven API.  The following packages provide this functionality:
 
 ```
-npm install --save express body-parser cors
+npm install --save express body-parser cors dotenv
 ```
 
 Not all packages are built with Typescript.  This causes problems when Typescript tries to identify inputs and outputs.  Most non-typescript packages have extra development packages available to provide the missing types.
