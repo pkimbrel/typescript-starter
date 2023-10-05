@@ -2,6 +2,9 @@ import getStuff from "folder1/getStuff";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import 'dotenv/config'
+
+console.log(`VAR: ${process.env.VAR1}`)
 
 const app = express();
 app.use(bodyParser.json());
